@@ -33,9 +33,10 @@ while True:
     while True:
         # Game cycle
         first_field = client_first_sock.recv(1024)
+        print(first_field)
         client_second_sock.send(first_field)
-        time.sleep(3)
         second_field = client_second_sock.recv(1024)
+        print(second_field)
         client_first_sock.send(second_field)
         time.sleep(3)
 

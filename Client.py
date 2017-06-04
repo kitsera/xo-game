@@ -7,8 +7,10 @@ client_socket.connect(('192.168.1.103', 53211))
 game_state = client_socket.recv(1)
 if game_state == b'f' or game_state == b's':
     player_state = input("Type 'r' when you are ready: ")
-    client_socket.send(bytes(player_state))
+    if player_state == 'r':
+        client_socket.send(b'r')
     while True:
+        print(game_state)
         if game_state == b'f':
             client_socket.send(b'first player move')
             move = client_socket.recv(1024)
